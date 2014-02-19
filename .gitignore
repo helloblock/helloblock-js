@@ -13,6 +13,11 @@ logs
 results
 notes
 ideas
+hack.js
 
 npm-debug.log
 node_modules/
+
+dsl.js
+dsl
+temp.js

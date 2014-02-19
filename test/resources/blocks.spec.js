@@ -45,15 +45,15 @@ describe( "Blocks", function() {
   } )
 
   // TODO: block/:id/transactions current breaks HelloBlockClient
-  // it( "should retrieve the correct transactions", function( done ) {
-  //   HelloBlock.Blocks.retrieveTransactions( {
-  //     blockId: Fixtures.testnet.blockIds[ 0 ]
-  //   }, function( error, response ) {
-  //     expect( error ).to.equal( null );
-  //     expect( response.transactions ).to.not.be.empty;
-  //     done()
-  //   } )
-  // } );
+  it( "should retrieve the correct transactions", function( done ) {
+    HelloBlock.Blocks.retrieveTransactions( {
+      blockId: Fixtures.testnet.blockIds[ 0 ]
+    }, function( error, response ) {
+      expect( error ).to.equal( null );
+      expect( response.transactions ).to.not.be.empty;
+      done()
+    } )
+  } );
 
   it( "should return appropriate errors", function( done ) {
     var blockId = 999999

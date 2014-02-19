@@ -58,7 +58,9 @@ describe( "Addresses", function() {
 
   it( "should return appropriate errors", function( done ) {
     var address = Fixtures.testnet.addresses[ 0 ] + "adsf";
-    HelloBlock.Addresses.retrieve( address, function( error, response ) {
+    HelloBlock.Addresses.retrieve( {
+      address: address
+    }, function( error, response ) {
       expect( error ).to.exist;
       done()
     } )

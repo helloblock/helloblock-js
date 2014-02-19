@@ -6,6 +6,7 @@
     "bitcoin",
     "helloblock"
   ],
+  "main": "./lib/helloblock.js",
   "author": "Scott Li",
   "license": "BSD-2-Clause",
   "dependencies": {

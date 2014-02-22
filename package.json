@@ -10,7 +10,7 @@
     "type": "git",
     "url": "https://github.com/helloblock/helloblock-js"
   },
-  "main": "./lib/helloblock.js",
+  "main": "./lib/HelloBlock.js",
   "author": "Scott Li",
   "license": "BSD-2-Clause",
   "dependencies": {

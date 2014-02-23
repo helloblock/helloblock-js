@@ -1,5 +1,6 @@
 var mocha = require( "mocha" );
 var expect = require( "chai" ).expect;
+var request = require( "request" );
 var HelloBlock = require( "../../lib/HelloBlock" )
 
 HelloBlock.BLOCKCHAIN_NETWORK = "testnet";
@@ -59,7 +60,7 @@ describe( "Transactions", function() {
 
   it( "should decode a raw transaction", function( done ) {
     var rawTxHex = Fixtures.testnet.rawTxHex;
-    HelloBlock.Transactions.decodeRawTransaction( {
+    HelloBlock.Transactions.decode( {
       rawTxHex: rawTxHex
     }, function( error, response ) {
 
@@ -69,17 +70,26 @@ describe( "Transactions", function() {
     } );
   } )
 
-  // TODO: Mock real testnet transactions;
   it( "should send a raw transaction", function( done ) {
-    var rawTxHex = Fixtures.testnet.rawTxHex;
-    HelloBlock.Transactions.sendRawTransaction( {
-      rawTxHex: rawTxHex
-    }, function( error, response ) {
+    request( {
+      url: "https://testnet.helloblock.io/faucet/random",
+      qs: {
+        toAddress: "mpjuaPusdVC5cKvVYCFX94bJX1SNUY8EJo"
+      },
+      method: "GET",
+      json: true
+    }, function( err, response, body ) {
+      rawTxHex = body.data.rawTxHex;
 
-      expect( error ).to.equal( null );
-      expect( response.transaction ).to.exist
-      done()
-    } );
+      HelloBlock.Transactions.propagate( {
+        rawTxHex: rawTxHex
+      }, function( error, response ) {
+
+        expect( error ).to.equal( null );
+        expect( response.transaction ).to.exist
+        done()
+      } );
+    } )
   } )
 
   // TODO

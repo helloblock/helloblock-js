@@ -13,7 +13,7 @@ describe( "Faucet", function() {
       expect( error ).to.equal( null );
       expect( response.address ).to.exist;
       expect( response.privateKeyBase58Uncompressed ).to.exist;
-      expect( unspents ).to.not.be.empty;
+      expect( response.unspents ).to.not.be.empty;
       done()
     } );
   } );
@@ -44,7 +44,7 @@ describe( "Faucet", function() {
   } )
 
   it( "should return stats", function( done ) {
-    HelloBlock.Faucet.stats( function( error, response ) {
+    HelloBlock.Faucet.stats( {}, function( error, response ) {
 
       expect( error ).to.equal( null );
       expect( response ).to.exist
@@ -52,8 +52,4 @@ describe( "Faucet", function() {
     } );
 
   } );
-
-  // TODO
-  // Test more errors
-  // Test params, e.g limit/offset
 } );

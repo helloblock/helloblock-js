@@ -1,7 +1,7 @@
-var mocha = require( "mocha" );
-var expect = require( "chai" ).expect;
-var request = require( "request" );
-var HelloBlock = require( "../../lib/HelloBlock" )
+var mocha = require("mocha");
+var expect = require("chai").expect;
+var request = require("request");
+var HelloBlock = require("../../lib/HelloBlock")
 
 HelloBlock.BLOCKCHAIN_NETWORK = "testnet";
 
@@ -24,75 +24,75 @@ var Fixtures = {
   }
 }
 
-describe( "Transactions", function() {
-  it( "should retrieve the correct transaction", function( done ) {
-    var txHash = Fixtures.testnet.txHashes[ 0 ];
-    HelloBlock.Transactions.retrieve( {
+describe("Transactions", function() {
+  it("should retrieve the correct transaction", function(done) {
+    var txHash = Fixtures.testnet.txHashes[0];
+    HelloBlock.Transactions.retrieve({
       txHash: txHash
-    }, function( error, response ) {
+    }, function(error, response) {
 
-      expect( error ).to.equal( null );
-      expect( response.transaction.txHash ).to.equal( txHash );
+      expect(error).to.equal(null);
+      expect(response.transaction.txHash).to.equal(txHash);
       done()
-    } );
-  } );
+    });
+  });
 
-  it( "should retrieve batch transactions", function( done ) {
+  it("should retrieve batch transactions", function(done) {
     var txHashes = Fixtures.testnet.txHashes;
-    HelloBlock.Transactions.retrieveBatch( {
+    HelloBlock.Transactions.retrieveBatch({
       txHashes: txHashes
-    }, function( error, response ) {
+    }, function(error, response) {
 
-      expect( error ).to.equal( null );
-      expect( response.transactions ).to.exist;
+      expect(error).to.equal(null);
+      expect(response.transactions).to.exist;
       done()
-    } );
-  } )
+    });
+  })
 
-  it( "should retrieve latest transactions", function( done ) {
-    HelloBlock.Transactions.retrieveLatest( {}, function( error, response ) {
+  it("should retrieve latest transactions", function(done) {
+    HelloBlock.Transactions.retrieveLatest({}, function(error, response) {
 
-      expect( error ).to.equal( null );
-      expect( response.transactions ).to.not.be.empty
+      expect(error).to.equal(null);
+      expect(response.transactions).to.not.be.empty
       done()
-    } );
-  } )
+    });
+  })
 
-  it( "should decode a raw transaction", function( done ) {
+  it("should decode a raw transaction", function(done) {
     var rawTxHex = Fixtures.testnet.rawTxHex;
-    HelloBlock.Transactions.decode( {
+    HelloBlock.Transactions.decode({
       rawTxHex: rawTxHex
-    }, function( error, response ) {
+    }, function(error, response) {
 
-      expect( error ).to.equal( null );
-      expect( response.transaction ).to.exist
+      expect(error).to.equal(null);
+      expect(response.transaction).to.exist
       done()
-    } );
-  } )
+    });
+  })
 
-  it( "should send a raw transaction", function( done ) {
-    request( {
+  it("should send a raw transaction", function(done) {
+    request({
       url: "https://testnet.helloblock.io/faucet/random",
       qs: {
         toAddress: "mpjuaPusdVC5cKvVYCFX94bJX1SNUY8EJo"
       },
       method: "GET",
       json: true
-    }, function( err, response, body ) {
+    }, function(err, response, body) {
       rawTxHex = body.data.rawTxHex;
 
-      HelloBlock.Transactions.propagate( {
+      HelloBlock.Transactions.propagate({
         rawTxHex: rawTxHex
-      }, function( error, response ) {
+      }, function(error, response) {
 
-        expect( error ).to.equal( null );
-        expect( response.transaction ).to.exist
+        expect(error).to.equal(null);
+        expect(response.transaction).to.exist
         done()
-      } );
-    } )
-  } )
+      });
+    })
+  })
 
   // TODO
   // Test more errors
   // Test params, e.g limit/offset
-} );
+});

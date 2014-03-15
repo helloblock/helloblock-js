@@ -1,6 +1,6 @@
-var mocha = require( "mocha" );
-var expect = require( "chai" ).expect;
-var HelloBlock = require( "../../lib/HelloBlock" )
+var mocha = require("mocha");
+var expect = require("chai").expect;
+var HelloBlock = require("../../lib/HelloBlock")
 
 HelloBlock.BLOCKCHAIN_NETWORK = "testnet";
 
@@ -22,52 +22,52 @@ var Fixtures = {
   }
 }
 
-describe( "Addresses", function() {
-  it( "should retrieve the correct address", function( done ) {
-    var address = Fixtures.testnet.addresses[ 0 ];
-    HelloBlock.Addresses.retrieve( {
+describe("Addresses", function() {
+  it("should retrieve the correct address", function(done) {
+    var address = Fixtures.testnet.addresses[0];
+    HelloBlock.Addresses.retrieve({
       address: address
-    }, function( error, response ) {
+    }, function(error, response) {
 
-      expect( error ).to.equal( null );
-      expect( response.address.address ).to.equal( address );
+      expect(error).to.equal(null);
+      expect(response.address.address).to.equal(address);
       done()
-    } );
-  } );
+    });
+  });
 
-  it( "should retrieve the correct transactions", function( done ) {
-    HelloBlock.Addresses.retrieveTransactions( {
+  it("should retrieve the correct transactions", function(done) {
+    HelloBlock.Addresses.retrieveTransactions({
       addresses: Fixtures.testnet.addresses
-    }, function( error, response ) {
-      expect( error ).to.equal( null );
-      expect( response.transactions ).to.not.be.empty;
+    }, function(error, response) {
+      expect(error).to.equal(null);
+      expect(response.transactions).to.not.be.empty;
       done()
-    } )
-  } );
+    })
+  });
 
-  it( "should retrieve the correct unspents", function( done ) {
-    HelloBlock.Addresses.retrieveUnspents( {
+  it("should retrieve the correct unspents", function(done) {
+    HelloBlock.Addresses.retrieveUnspents({
       addresses: Fixtures.testnet.addresses
-    }, function( error, response ) {
-      expect( error ).to.equal( null );
-      expect( response.unspents ).to.not.be.empty;
+    }, function(error, response) {
+      expect(error).to.equal(null);
+      expect(response.unspents).to.not.be.empty;
       done()
-    } );
+    });
 
-  } );
+  });
 
-  it( "should return appropriate errors", function( done ) {
-    var address = Fixtures.testnet.addresses[ 0 ] + "adsf";
-    HelloBlock.Addresses.retrieve( {
+  it("should return appropriate errors", function(done) {
+    var address = Fixtures.testnet.addresses[0] + "adsf";
+    HelloBlock.Addresses.retrieve({
       address: address
-    }, function( error, response ) {
-      expect( error ).to.exist;
+    }, function(error, response) {
+      expect(error).to.exist;
       done()
-    } )
+    })
 
-  } );
+  });
 
   // TODO
   // Test more errors
   // Test params, e.g limit/offset
-} );
+});

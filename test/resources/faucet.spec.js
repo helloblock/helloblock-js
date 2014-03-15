@@ -12,7 +12,7 @@ describe("Faucet", function() {
 
       expect(error).to.equal(null);
       expect(response.address).to.exist;
-      expect(response.privateKeyBase58Uncompressed).to.exist;
+      expect(response.privateKeyWIF).to.exist;
       expect(response.unspents).to.not.be.empty;
       done()
     });
@@ -32,24 +32,24 @@ describe("Faucet", function() {
     });
   });
 
-  it("should retrieve random", function(done) {
-    HelloBlock.Faucet.random({
-      toAddress: "mpjuaPusdVC5cKvVYCFX94bJX1SNUY8EJo"
-    }, function(error, response) {
+  // it("should retrieve random", function(done) {
+  //   HelloBlock.Faucet.random({
+  //     toAddress: "mpjuaPusdVC5cKvVYCFX94bJX1SNUY8EJo"
+  //   }, function(error, response) {
 
-      expect(error).to.equal(null);
-      expect(response.rawTxHex).to.exist
-      done()
-    });
-  })
+  //     expect(error).to.equal(null);
+  //     expect(response.rawTxHex).to.exist
+  //     done()
+  //   });
+  // })
 
-  it("should return stats", function(done) {
-    HelloBlock.Faucet.stats({}, function(error, response) {
+  // it("should return stats", function(done) {
+  //   HelloBlock.Faucet.stats({}, function(error, response) {
 
-      expect(error).to.equal(null);
-      expect(response).to.exist
-      done()
-    });
+  //     expect(error).to.equal(null);
+  //     expect(response).to.exist
+  //     done()
+  //   });
 
-  });
+  // });
 });

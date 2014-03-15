@@ -58,18 +58,6 @@ describe("Transactions", function() {
     });
   })
 
-  it("should decode a raw transaction", function(done) {
-    var rawTxHex = Fixtures.testnet.rawTxHex;
-    HelloBlock.Transactions.decode({
-      rawTxHex: rawTxHex
-    }, function(error, response) {
-
-      expect(error).to.equal(null);
-      expect(response.transaction).to.exist
-      done()
-    });
-  })
-
   it("should send a raw transaction", function(done) {
     request({
       url: "https://testnet.helloblock.io/faucet/random",
@@ -91,6 +79,18 @@ describe("Transactions", function() {
       });
     })
   })
+
+  // it("should decode a raw transaction", function(done) {
+  //   var rawTxHex = Fixtures.testnet.rawTxHex;
+  //   HelloBlock.Transactions.decode({
+  //     rawTxHex: rawTxHex
+  //   }, function(error, response) {
+
+  //     expect(error).to.equal(null);
+  //     expect(response.transaction).to.exist
+  //     done()
+  //   });
+  // })
 
   // TODO
   // Test more errors

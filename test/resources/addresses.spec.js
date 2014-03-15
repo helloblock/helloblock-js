@@ -37,7 +37,7 @@ describe("Addresses", function() {
 
   it("should retrieve the correct transactions", function(done) {
     HelloBlock.Addresses.retrieveTransactions({
-      addresses: Fixtures.testnet.addresses
+      address: Fixtures.testnet.addresses[0]
     }, function(error, response) {
       expect(error).to.equal(null);
       expect(response.transactions).to.not.be.empty;
@@ -47,7 +47,7 @@ describe("Addresses", function() {
 
   it("should retrieve the correct unspents", function(done) {
     HelloBlock.Addresses.retrieveUnspents({
-      addresses: Fixtures.testnet.addresses
+      address: Fixtures.testnet.addresses[0]
     }, function(error, response) {
       expect(error).to.equal(null);
       expect(response.unspents).to.not.be.empty;

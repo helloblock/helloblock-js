@@ -44,7 +44,6 @@ describe("Blocks", function() {
     });
   })
 
-  // TODO: block/:id/transactions current breaks HelloBlockClient
   it("should retrieve the correct transactions", function(done) {
     HelloBlock.Blocks.retrieveTransactions({
       blockId: Fixtures.testnet.blockIds[0]

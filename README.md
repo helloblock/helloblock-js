@@ -85,10 +85,23 @@ helloblock.resource.action('data', [options], function (err, response, resource)
 The following API resources are exposes in the module:
 
 - [transactions](#helloblocktransactions)
-  - [transactions.get](#helloblocktransactionsget)
-  - [transactions.batchGet](#helloblocktransactions)
-  - [transactions.latest](#helloblocktransactions)
-  - [transactions.propagate](#helloblocktransactions)
+  - [transactions.get(txHash, callback)](#helloblocktransactionsget)
+  - [transactions.batchGet(txHashes, callback)](#helloblocktransactionsbatchget)
+  - [transactions.latest([options], callback)](#helloblocktransactionslatest)
+  - [transactions.propagate(rawTxHex, callback)](#helloblocktransactionspropagate)
+- addresses
+  - addresses.get(address, callback)
+  - addresses.batchGet(addresses, callback)
+  - addresses.getTransactions(addresses, [options], callback)
+  - addresses.getUnspents(addresses, [options], callback)
+- blocks
+  - blocks.get(blockId, callback)
+  - blocks.latest([options], callback)
+- faucet
+  - faucet.get(type, callback)
+  - faucet.withdraw(toAddress, value, callback)
+- wallet
+  - wallet.get(addresses, [options], callback)
 
 ### helloblock.transactions
 #### helloblock.transactions.get
@@ -102,6 +115,59 @@ Get a transaction by its [txHash]('https://helloblock.io/docs/ref#transactions-s
 
 ```js
 helloblock.transactions.get('2542cd64e02d902975dc6e2e97797ceec5a84e8597c80d22a9e2dbd16e748738', function (err, resp, resource) {
+  /*
+    use the resource
+  */
+});
+```
+
+#### helloblock.transactions.batchGet
+
+Get transactions by an array of [txHashes]('https://helloblock.io/docs/ref#transactions-batch')
+
+##### Arguments
+
+- `txHashes` **Array[String]**
+- `callback` **function**
+
+```js
+var txHashes = ['2542cd64e02d902975dc6e2e97797ceec5a84e8597c80d22a9e2dbd16e748738', '6f9e9570881e781db8c137c84c111a138e4a022e6b2def5e2a1589a802fe25f3']
+helloblock.transactions.getBatch(txHashes, function (err, resp, resource) {
+  /*
+    use the resource
+  */
+});
+```
+
+#### helloblock.transactions.latest
+
+Get [latest]('https://helloblock.io/docs/ref#transactions-latest') transactions sorted by timestamp
+
+##### Arguments
+
+- `options` **object** (`limit` {integer}, `offset` {integer})
+- `callback` **function**
+
+```js
+helloblock.transactions.latest({limit: 10, offset: 10}, function (err, resp, resource) {
+  /*
+    use the resource
+  */
+});
+```
+
+#### helloblock.transactions.propagate
+
+[Propagate]('https://helloblock.io/docs/ref#transactions-post') a raw transaction to the Bitcoin network
+
+##### Arguments
+
+- `rawTxHex` **string**
+- `callback` **function**
+
+```js
+var rawTxHex = '0100000001ec71e2ceac84....'
+helloblock.transactions.latest(rawTxHex, function (err, resp, resource) {
   /*
     use the resource
   */

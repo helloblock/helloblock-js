@@ -17,6 +17,7 @@ hack.js
 
 npm-debug.log
 node_modules/
+coverage/
 
 dsl.js
 dsl

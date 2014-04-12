@@ -1,8 +1,9 @@
 var mocha = require("mocha");
 var expect = require("chai").expect;
-var HelloBlock = require("../../lib/HelloBlock")
-
-HelloBlock.BLOCKCHAIN_NETWORK = "testnet";
+var helloblock = require("../../lib/helloblock")({
+  network: 'testnet',
+  debug: true
+})
 
 // Fixtures
 var Fixtures = {
@@ -23,48 +24,40 @@ var Fixtures = {
 }
 
 describe("Addresses", function() {
-  it("should retrieve the correct address", function(done) {
+  it("- get", function(done) {
     var address = Fixtures.testnet.addresses[0];
-    HelloBlock.Addresses.retrieve({
-      address: address
-    }, function(error, response) {
-
-      expect(error).to.equal(null);
-      expect(response.address.address).to.equal(address);
+    helloblock.addresses.get(address, function(err, resp, resource) {
+      expect(err).to.equal(null);
+      expect(resource.address).to.equal(address);
       done()
     });
   });
 
-  it("should retrieve the correct transactions", function(done) {
-    HelloBlock.Addresses.retrieveTransactions({
-      address: Fixtures.testnet.addresses[0]
-    }, function(error, response) {
-      expect(error).to.equal(null);
-      expect(response.transactions).to.not.be.empty;
+  it("- getTransactions", function(done) {
+    helloblock.addresses.getTransactions(Fixtures.testnet.addresses, function(err, resp, resource) {
+      expect(err).to.equal(null);
+      expect(resource).to.not.be.empty;
       done()
     })
   });
 
-  it("should retrieve the correct unspents", function(done) {
-    HelloBlock.Addresses.retrieveUnspents({
-      address: Fixtures.testnet.addresses[0]
-    }, function(error, response) {
-      expect(error).to.equal(null);
-      expect(response.unspents).to.not.be.empty;
+  it("- getUnspents", function(done) {
+    helloblock.addresses.getUnspents(Fixtures.testnet.addresses, function(err, resp, resource) {
+      expect(err).to.equal(null);
+      expect(resource).to.not.be.empty;
       done()
     });
-
   });
 
   it("should return appropriate errors", function(done) {
-    var address = Fixtures.testnet.addresses[0] + "adsf";
-    HelloBlock.Addresses.retrieve({
-      address: address
-    }, function(error, response) {
-      expect(error).to.exist;
-      done()
-    })
-
+    // var address = Fixtures.testnet.addresses[0] + "adsf";
+    // helloblock.addresses.retrieve({
+    //   address: address
+    // }, function(error, response) {
+    //   expect(error).to.exist;
+    //   done()
+    // })
+    done()
   });
 
   // TODO

@@ -10,12 +10,17 @@
     "type": "git",
     "url": "https://github.com/helloblock/helloblock-js"
   },
-  "main": "./lib/HelloBlock.js",
+  "scripts": {
+    "test": "mocha --reporter list test/resources/*.js"
+  },
+  "main": "./lib/helloblock.js",
   "author": "Scott Li",
   "license": "BSD-2-Clause",
   "dependencies": {
     "request": "~2.33.0",
-    "underscore": "~1.6.0"
+    "underscore": "~1.6.0",
+    "logfmt": "^1.1.2",
+    "querystring": "^0.2.0"
   },
   "devDependencies": {
     "mocha": "~1.17.1",

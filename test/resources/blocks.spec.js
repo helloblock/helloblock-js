@@ -1,8 +1,10 @@
-var mocha = require("mocha");
-var expect = require("chai").expect;
-var HelloBlock = require("../../lib/HelloBlock")
-
-HelloBlock.BLOCKCHAIN_NETWORK = "testnet";
+var mocha = require('mocha');
+var expect = require('chai').expect;
+var request = require('request');
+var helloblock = require('../../lib/helloblock')({
+  network: 'testnet',
+  debug: true
+})
 
 // Fixtures
 var Fixtures = {
@@ -22,50 +24,43 @@ var Fixtures = {
   }
 }
 
-describe("Blocks", function() {
-  it("should retrieve the correct block", function(done) {
+describe('Blocks', function() {
+  it('- get', function(done) {
     var blockId = Fixtures.testnet.blockIds[0];
-    HelloBlock.Blocks.retrieve({
-      blockId: blockId
-    }, function(error, response) {
-
-      expect(error).to.equal(null);
-      expect(response.block.blockHeight).to.equal(blockId);
+    helloblock.blocks.get(blockId, function(err, resp, resource) {
+      expect(err).to.equal(null);
+      expect(resource.blockHeight).to.equal(blockId);
       done()
     });
   });
 
-  it("should retrieve latest blocks", function(done) {
-    HelloBlock.Blocks.retrieveLatest({}, function(error, response) {
-
-      expect(error).to.equal(null);
-      expect(response.blocks).to.not.be.empty
+  it('- latest', function(done) {
+    helloblock.blocks.latest(function(err, resp, resource) {
+      expect(err).to.equal(null);
+      expect(resource).to.not.be.empty
       done()
     });
   })
 
-  it("should retrieve the correct transactions", function(done) {
-    HelloBlock.Blocks.retrieveTransactions({
-      blockId: Fixtures.testnet.blockIds[0]
-    }, function(error, response) {
-      expect(error).to.equal(null);
-      expect(response.transactions).to.not.be.empty;
+  it('- getTransactions', function(done) {
+    helloblock.blocks.getTransactions(Fixtures.testnet.blockIds[0], function(err, resp, resource) {
+      expect(err).to.equal(null);
+      expect(resource).to.not.be.empty;
       done()
     })
   });
 
-  it("should return appropriate errors", function(done) {
-    var blockId = 999999
-    HelloBlock.Blocks.retrieve({
-      blockId: blockId
-    }, function(error, response) {
-      expect(error).to.exist;
-      done()
-    })
+  // it('should return appropriate errors', function(done) {
+  //   var blockId = 999999
+  //   HelloBlock.Blocks.retrieve({
+  //     blockId: blockId
+  //   }, function(error, response) {
+  //     expect(error).to.exist;
+  //     done()
+  //   })
 
-  });
-
-  // TODO
-  // Test more errors
-  // Test params, e.g limit/offset
 });
+
+// TODO
+// Test more errors
+// Test params, e.g limit/offset

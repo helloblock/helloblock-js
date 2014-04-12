@@ -51,4 +51,16 @@ describe("Transactions", function() {
       done()
     });
   })
+
+  it('- propagate', function(done) {
+    helloblock.faucet.random('mpjuaPusdVC5cKvVYCFX94bJX1SNUY8EJo', function(err, resp, rand) {
+      expect(err).to.equal(null);
+      helloblock.transactions.propagate(rand.rawTxHex, function(err, resp, resource) {
+        expect(err).to.equal(null);
+        expect(resource.rawTxHex).to.equal(rand.rawTxHex)
+        expect(resource).to.exist;
+        done()
+      })
+    })
+  })
 });

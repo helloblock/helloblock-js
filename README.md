@@ -1,4 +1,4 @@
-![](https://circleci.com/gh/HelloBlock/helloblock-js.png?circle-token=a5ed26a1db80f4937ed2b118e6a460b96054e9cf)
+![](https://circleci.com/gh/helloblock/helloblock-js.png?circle-token=a5ed26a1db80f4937ed2b118e6a460b96054e9cf)
 
 ### HelloBlock-js
 

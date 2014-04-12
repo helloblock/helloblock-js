@@ -38,6 +38,7 @@
     "mocha": "~1.18.1",
     "chai": "~1.9.0",
     "testling": "^1.6.1",
-    "istanbul": "^0.2.7"
+    "istanbul": "^0.2.7",
+    "browserify": "https://github.com/substack/node-browserify/tarball/master"
   }
 }

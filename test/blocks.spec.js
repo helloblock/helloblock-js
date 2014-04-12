@@ -1,7 +1,7 @@
 var mocha = require('mocha');
 var expect = require('chai').expect;
 var request = require('request');
-var helloblock = require('../../lib/helloblock')({
+var helloblock = require('../lib/helloblock')({
   network: 'testnet',
   debug: true
 })

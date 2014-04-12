@@ -16,7 +16,7 @@ $ npm install helloblock-js --save
 
 
 ```js
-var helloblock = require("../../lib/helloblock")({
+var helloblock = require("../lib/helloblock")({
   network: 'testnet',
   debug: true
 })

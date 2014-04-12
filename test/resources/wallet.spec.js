@@ -1,8 +1,9 @@
 var mocha = require("mocha");
 var expect = require("chai").expect;
-var HelloBlock = require("../../lib/HelloBlock")
-
-HelloBlock.BLOCKCHAIN_NETWORK = "testnet";
+var helloblock = require("../../lib/helloblock")({
+  network: 'testnet',
+  debug: true
+});
 
 // Fixtures
 var Fixtures = {
@@ -23,22 +24,15 @@ var Fixtures = {
 }
 
 describe("Wallet", function() {
-  it("should retrieve the entire wallet", function(done) {
-    // var addresses = Fixtures.testnet.addresses
-    // HelloBlock.Wallet.retrieve({
-    //   addresses: addresses
-    // }, function(error, response) {
-
-    //   expect(error).to.equal(null);
-
-    //   expect(response.summary).to.exist
-    //   expect(response.latestBlock).to.exist
-    //   expect(response.transactions).to.exist
-    //   expect(response.addresses).to.exist
-    //   expect(response.exchangeRates).to.exist
-    //   done()
-    // });
-    done()
+  it("- get", function(done) {
+    var addresses = Fixtures.testnet.addresses
+    helloblock.wallet.get(addresses, function(err, resp, resource) {
+      expect(err).to.equal(null);
+      expect(resource.summary).to.exist
+      expect(resource.transactions).to.exist
+      expect(resource.addresses).to.exist
+      done()
+    });
   });
 
   // TODO

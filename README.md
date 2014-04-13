@@ -1,6 +1,6 @@
-![NodeJS Runtime](https://circleci.com/gh/helloblock/helloblock-js.png?circle-token=a5ed26a1db80f4937ed2b118e6a460b96054e9cf)
+[![NodeJS Runtime](https://circleci.com/gh/helloblock/helloblock-js.png?circle-token=a5ed26a1db80f4937ed2b118e6a460b96054e9cf)](https://circleci.com/gh/helloblock/helloblock-js.png?circle-token=a5ed26a1db80f4937ed2b118e6a460b96054e9cf)
 
-![Browser Runtime](https://ci.testling.com/helloblock/helloblock-js.png)
+[![Browser Runtime](https://ci.testling.com/helloblock/helloblock-js.png)](https://ci.testling.com/helloblock/helloblock-js.png)
 ### HelloBlock-js
 
 Javascript Client Wrappers for the [HelloBlock API][API].

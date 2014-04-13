@@ -1,4 +1,4 @@
-var expect = require("chai").expect;
+var expect = require('chai').expect;
 var helloblock = require("../lib/helloblock")({
   network: 'testnet',
   debug: true
@@ -21,7 +21,6 @@ var Fixtures = {
     ]
   }
 }
-
 describe("Addresses", function() {
   it("- get", function(done) {
     var address = Fixtures.testnet.addresses[0];

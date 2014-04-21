@@ -1,3 +1,7 @@
+0.2.0 / 2014-04-20
+-----------------
+* Remove user-agent header
+
 0.1.3 / 2014-04-12
 -----------------
 * Extend browser support

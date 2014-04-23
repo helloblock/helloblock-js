@@ -1,3 +1,7 @@
+0.2.1 / 2014-04-22
+-----------------
+* Catching err in client
+
 0.2.0 / 2014-04-20
 -----------------
 * Remove user-agent header

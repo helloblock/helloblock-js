@@ -8,25 +8,27 @@ var helloblock = require("../lib/helloblock")({
 var Fixtures = {
   testnet: {
     addresses: [
-      "mpjuaPusdVC5cKvVYCFX94bJX1SNUY8EJo",
-      "mvaRDyLUeF4CP7Lu9umbU3FxehyC5nUz3L",
-      "mjkrZkGsM8XjqbH5Gvg7knMPEb5UBLCTDL",
+    "mpjuaPusdVC5cKvVYCFX94bJX1SNUY8EJo",
+    "mvaRDyLUeF4CP7Lu9umbU3FxehyC5nUz3L",
+    "mjkrZkGsM8XjqbH5Gvg7knMPEb5UBLCTDL",
     ]
   },
   mainnet: {
     addresses: [
-      "168vRbBhSSQdQnyHH4ZUW8K3B65QjUQ4xJ",
-      "16ps38WzmDhEWMPQecVndrWZADekC4FU42",
-      "1FRzSRgPffe5A7F4ySgpeQzEDahDp1EtQx",
+    "168vRbBhSSQdQnyHH4ZUW8K3B65QjUQ4xJ",
+    "16ps38WzmDhEWMPQecVndrWZADekC4FU42",
+    "1FRzSRgPffe5A7F4ySgpeQzEDahDp1EtQx",
     ]
   }
 }
 describe("Addresses", function() {
+  this.timeout(5000);
   it("- get", function(done) {
     var address = Fixtures.testnet.addresses[0];
     helloblock.addresses.get(address, function(err, resp, resource) {
       expect(err).to.equal(null);
       expect(resource.address).to.equal(address);
+
       done()
     });
   });
@@ -77,8 +79,8 @@ describe("Addresses", function() {
     //   expect(error).to.exist;
     //   done()
     // })
-    done()
-  });
+  done()
+});
 
   // TODO
   // Test more errors

@@ -23,6 +23,7 @@ var Fixtures = {
 }
 
 describe('Blocks', function() {
+  this.timeout(5000);
   it('- get', function(done) {
     var blockId = Fixtures.testnet.blockIds[0];
     helloblock.blocks.get(blockId, function(err, resp, resource) {

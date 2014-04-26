@@ -4,6 +4,7 @@ var helloblock = require("../lib/helloblock")({
   debug: true
 })
 describe("Faucet", function() {
+  this.timeout(5000);
   it("- get (random key with unspent outputs)", function(done) {
     helloblock.faucet.get(1, function(err, response, resource) {
       expect(err).to.equal(null);

@@ -23,6 +23,7 @@ var Fixtures = {
 }
 
 describe("Wallet", function() {
+  this.timeout(5000);
   it("- get", function(done) {
     var addresses = Fixtures.testnet.addresses
     helloblock.wallet.get(addresses, function(err, resp, resource) {

@@ -1,3 +1,7 @@
+0.2.2 / 2014-05-14
+------------------
+* Bugfix - options in single gets
+
 0.2.1 / 2014-04-22
 -----------------
 * Catching err in client

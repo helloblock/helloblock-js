@@ -42,8 +42,8 @@ describe("Addresses", function() {
   });
 
   it("- getTransactions (limit & offset)", function(done) {
-    var addrs = Fixtures.testnet.addresses
-    helloblock.addresses.getTransactions(addrs, {
+    var addr = Fixtures.testnet.addresses[0]
+    helloblock.addresses.getTransactions(addr, {
       limit: 100
     }, function(err, resp, resource) {
       expect(err).to.equal(null);
@@ -51,7 +51,7 @@ describe("Addresses", function() {
       expect(resource.length).to.equal(100);
 
       var last = resource[99];
-      helloblock.addresses.getTransactions(addrs, {
+      helloblock.addresses.getTransactions(addr, {
         limit: 5,
         offset: 99
       }, function(err, resp, resource) {
@@ -65,6 +65,14 @@ describe("Addresses", function() {
 
   it("- getUnspents", function(done) {
     helloblock.addresses.getUnspents(Fixtures.testnet.addresses, function(err, resp, resource) {
+      expect(err).to.equal(null);
+      expect(resource).to.not.be.empty;
+      done()
+    });
+  });
+
+  it("- getUnspents (value)", function(done) {
+    helloblock.addresses.getUnspents(Fixtures.testnet.addresses, {value: 10000}, function(err, resp, resource) {
       expect(err).to.equal(null);
       expect(resource).to.not.be.empty;
       done()

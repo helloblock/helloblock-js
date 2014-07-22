@@ -24,7 +24,7 @@ var Fixtures = {
 }
 
 describe("Transactions", function() {
-  this.timeout(5000);
+  this.timeout(10000);
   it("- get", function(done) {
     var txHash = Fixtures.testnet.txHashes[0];
     helloblock.transactions.get(txHash, function(err, response, resource) {

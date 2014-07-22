@@ -1,3 +1,7 @@
+0.2.3 / 2014-07-22
+-----------------
+* Extend formating utility to convert unspent into bitcoind format
+
 0.2.2 / 2014-05-14
 ------------------
 * Bugfix - options in single gets

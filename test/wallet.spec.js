@@ -8,7 +8,6 @@ var helloblock = require("../lib/helloblock")({
 var Fixtures = {
   testnet: {
     addresses: [
-      "mpjuaPusdVC5cKvVYCFX94bJX1SNUY8EJo",
       "mvaRDyLUeF4CP7Lu9umbU3FxehyC5nUz3L",
       "mjkrZkGsM8XjqbH5Gvg7knMPEb5UBLCTDL",
     ]

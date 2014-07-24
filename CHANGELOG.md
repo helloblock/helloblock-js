@@ -1,3 +1,7 @@
+0.2.4 / 2014-07-24
+-----------------
+* Transaction filtering utilities
+
 0.2.3 / 2014-07-22
 -----------------
 * Extend formating utility to convert unspent into bitcoind format

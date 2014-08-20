@@ -1,3 +1,7 @@
+0.2.5 / 2014-08-20
+-----------------
+* Allow auth as an option
+
 0.2.4 / 2014-07-24
 -----------------
 * Transaction filtering utilities
